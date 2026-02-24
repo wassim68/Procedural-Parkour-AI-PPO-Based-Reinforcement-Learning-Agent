@@ -78,7 +78,7 @@ Best performance achieved at:
 - Minimal falling
 
 
-See `docs/benchmarks.md` for full metrics.
+See `docs/benchmarks` for full metrics.
 
 ---
 

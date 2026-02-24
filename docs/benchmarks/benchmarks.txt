@@ -1,0 +1,58 @@
+BENCHMARKS
+Evaluation Protocol
+
+Algorithm: Proximal Policy Optimization (PPO)
+
+Policy Architecture: MLP [256, 256]
+
+Observation Space: 20 continuous features (normalized)
+
+Action Space: Discrete (Idle, Left, Right, Jump, Dash)
+
+Deterministic inference during evaluation
+
+20 evaluation episodes per benchmark
+
+Procedural platform generation enabled
+
+FPS: 165
+
+Max episode steps: 10,000
+
+
+Best checkpoint achieved at ~600k training steps.
+
+Mean Reward: 850
+Maximum Single Episode Score: > 4500
+Average survive time: 40 sec
+
+
+
+Training Stability Indicators (Peak Model)
+
+Approximate KL Divergence: ~0.006–0.009
+Explained Variance: 0.90–0.97
+Clip Fraction: ~0.10–0.12
+Entropy Loss: -0.9 to -1.0
+Value Loss: < 1.0
+
+
+
+Agent generalizes across random gap and height distributions.
+
+Overtraining Observations
+
+Beyond ~700k–800k steps:
+
+Slight degradation in consistency
+
+Increased variance in performance
+
+Occasional early falls
+
+Reduced stability in long episodes
+
+Conclusion:
+
+The agent reaches optimal performance before 1M steps.
+Extended training without learning-rate decay leads to mild overfitting and reduced consistency.

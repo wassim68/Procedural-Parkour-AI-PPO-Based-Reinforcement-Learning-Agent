@@ -6,7 +6,7 @@ from collections import deque
 RENDER = True  
 EPISODES = 10   
 FPS = 165
-MODEL_PATH = "models/ppo_parkour_model"
+MODEL_PATH = "models/ppo_parkour_model_final"
 
 env = GameState()
 env.init(RENDER=RENDER) 
@@ -21,9 +21,11 @@ if RENDER:
 
 stop_test = False
 
+reward_history = deque(maxlen=int(0.3 * FPS)) 
+total_rewards = 0
+total_platforms = 0
+total_survive_time = 0
 
-
-reward_history = deque(maxlen=int(0.3 * FPS))  
 
 for ep in range(EPISODES):
     if stop_test: break
@@ -62,4 +64,10 @@ for ep in range(EPISODES):
             )
 
     print(f"Episode {ep+1}: Reward={total_reward}, Length={ep_len}")
-print("Testing complete.")  
+    total_rewards += total_reward
+    total_platforms += env.player.progress
+    total_survive_time += ep_len / FPS
+print("Testing complete.")
+print(f"Average Reward over {EPISODES} episodes: {total_rewards / EPISODES}")  
+print(f"Average Platforms over {EPISODES} episodes: {total_platforms / EPISODES}")  
+print(f"Average Survival Time over {EPISODES} episodes: {total_survive_time / EPISODES:.2f} seconds")

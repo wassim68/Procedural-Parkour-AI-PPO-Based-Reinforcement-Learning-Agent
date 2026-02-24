@@ -88,3 +88,4 @@ See `docs/benchmarks` for full metrics.
 git clone <repo>
 cd procedural-parkour-rl
 pip install -r requirements.txt
+python test.py
